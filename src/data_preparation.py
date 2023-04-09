@@ -49,7 +49,7 @@ class DataConverter:
         for i in range(len(images)):
         
             image_list.append({"id" : i,
-                               "file_name" : images[i],
+                               "file_name" : images[i]+'.jpg',
                                "width" : int(self.ann.loc[self.ann["image_name"] == images[i]].iloc[0]["page_width"]),
                                "height" : int(self.ann.loc[self.ann["image_name"] == images[i]].iloc[0]["page_height"]),
                                "data_captured" : "",
@@ -67,7 +67,7 @@ class DataConverter:
         for i in range(len(self.ann)):
             
             annotation_list.append({"id" : i,
-                                    "image_id" : int(image_id_data.loc[image_id_data["file_name"] == self.ann["image_name"][i]].iloc[0]["id"]),
+                                    "image_id" : int(image_id_data.loc[image_id_data["file_name"] == self.ann["image_name"][i]+'.jpg'].iloc[0]["id"]),
                                     "category_id" : self.label2id[self.ann["labels"][i]],
                                     "iscrowd" : 0,
                                     "area" : int(self.ann["width"][i]) * int(self.ann["height"][i]),
