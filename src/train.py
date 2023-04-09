@@ -135,7 +135,7 @@ class Train:
         model = Detr(lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
         #PATH = '/Users/.../aa.ckpt'
         #model = model.load_from_checkpoint(PATH,lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
-        trainer = Trainer(accelerator='gpu', devices=2,max_steps = self.max_steps, gradient_clip_val = self.gradient_clip_val, batch_size=self.train_batch_size)
+        trainer = Trainer(accelerator='gpu', devices=2,max_steps = self.max_steps, gradient_clip_val = self.gradient_clip_val)
         trainer.fit(model)
 
         #-----
