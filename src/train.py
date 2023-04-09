@@ -12,7 +12,7 @@ from detr import Detr
 from pytorch_lightning import Trainer
 import argparse
 import os
-import jsonT
+import json
 import torch
 from datasets_helper import get_coco_api_from_dataset
 from datasets_helper.coco_eval import CocoEvaluator
