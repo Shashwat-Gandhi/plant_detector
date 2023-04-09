@@ -3,7 +3,8 @@
 """
 @author: A.Akdogan
 """
-
+import sys
+sys.path.append('/kaggle/working/plant_detector/src')
 from coco_detection import CocoDetection
 from torch.utils.data import DataLoader
 from transformers import DetrFeatureExtractor
