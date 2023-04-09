@@ -12,7 +12,7 @@ from detr import Detr
 from pytorch_lightning import Trainer
 import argparse
 import os
-import json
+import jsonT
 import torch
 from datasets_helper import get_coco_api_from_dataset
 from datasets_helper.coco_eval import CocoEvaluator
@@ -135,7 +135,7 @@ class Train:
         model = Detr(lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
         #PATH = '/Users/.../aa.ckpt'
         #model = model.load_from_checkpoint(PATH,lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
-        trainer = Trainer(max_steps = self.max_steps, gradient_clip_val = self.gradient_clip_val)
+        trainer = Trainer(accelerator='gpu', devices=2,max_steps = self.max_steps, gradient_clip_val = self.gradient_clip_val)
         trainer.fit(model)
 
         #-----
