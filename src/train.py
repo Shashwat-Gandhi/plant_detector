@@ -133,8 +133,8 @@ class Train:
         cats = train_dataset.coco.cats
         id2label = {k: v['name'] for k,v in cats.items()}
         model = Detr(lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
-#         PATH = '/kaggle/working/saved_models/model_1_epoch_8'
-#         model = model.load_from_checkpoint(PATH,lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
+        PATH = '/kaggle/working/saved_models/model_1_epoch_15.ckpt'
+        model = model.load_from_checkpoint(PATH,lr=self.lr, lr_backbone=self.lr_backbone, weight_decay=self.weight_decay, id2label = id2label, train_dataloader = train_dataloader, val_dataloader = val_dataloader)
         trainer = Trainer(accelerator='gpu', devices=2,max_steps = self.max_steps, gradient_clip_val = self.gradient_clip_val)
         trainer.fit(model)
 
